@@ -70,11 +70,11 @@ O resultado é salvo em `artifacts/dashboard.html` e pode ser aberto diretamente
 
 ## Entrega final e evidencias
 
-Al?m dos scripts e dados, o pacote final inclui evid?ncias separadas para confer?ncia r?pida:
+Al?m dos scripts e dados, o pacote final inclui evidências separadas para confer?ncia rápida:
 
-- `dw_projeto.duckdb`: snapshot port?til do DW para inspe??o local das dimens?es, fatos, SCD2, ?ndices e contagens.
-- `pipeline_log.json`: resumo estruturado das etapas, status, evid?ncias e contagens antes/depois.
-- `docs/evidencias/`: arquivos separados para SCD2, ?ndices, particionamento, time travel, schema evolution e valida??o de contagens.
+- `dw_projeto.duckdb`: snapshot portátil do DW para inspeção local das dimens?es, fatos, SCD2, índices e contagens.
+- `pipeline_log.json`: resumo estruturado das etapas, status, evidências e contagens antes/depois.
+- `docs/evidencias/`: arquivos separados para SCD2, índices, particionamento, time travel, schema evolution e valida??o de contagens.
 - `artifacts/apresentacao_final.pptx`: apresenta??o exportada em PowerPoint.
 - `artifacts/dashboard.html`: dashboard offline.
 
