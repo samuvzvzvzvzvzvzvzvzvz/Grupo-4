@@ -1,0 +1,95 @@
+{
+  "generated_at": "2026-06-26T16:25:59",
+  "dataset": "Barcelona Luxury Hotel F&B",
+  "architectures": [
+    "Data Warehouse ETL",
+    "Data Lake ELT Medallion"
+  ],
+  "steps": [
+    {
+      "step": "source_validation",
+      "status": "passed",
+      "evidence": "scripts/validate_sources.ps1",
+      "note": "24 booking_date de 2022 documentadas e tratadas com dim_date estendida"
+    },
+    {
+      "step": "dw_staging_load",
+      "status": "completed",
+      "evidence": "logs/dw-run.log"
+    },
+    {
+      "step": "dw_star_schema_load",
+      "status": "completed",
+      "evidence": "dw_projeto.duckdb, sql/dw/*.sql"
+    },
+    {
+      "step": "dw_scd2",
+      "status": "completed",
+      "evidence": "docs/evidencias/scd2_dim_unit.txt"
+    },
+    {
+      "step": "dw_indexes_partitioning",
+      "status": "completed",
+      "evidence": "docs/evidencias/indices_dw.txt, docs/evidencias/particionamento_dw.txt"
+    },
+    {
+      "step": "lakehouse_bronze_silver_gold",
+      "status": "completed",
+      "evidence": "data/lakehouse, logs/lakehouse-run.log"
+    },
+    {
+      "step": "lakehouse_time_travel",
+      "status": "completed",
+      "evidence": "docs/evidencias/delta_history.txt"
+    },
+    {
+      "step": "lakehouse_schema_evolution",
+      "status": "completed",
+      "evidence": "docs/evidencias/schema_evolution.txt"
+    },
+    {
+      "step": "analytics_dashboard",
+      "status": "completed",
+      "evidence": "sql/analytics, artifacts/dashboard.html"
+    }
+  ],
+  "row_counts": [
+    {
+      "dataset": "fact_budget",
+      "source_rows": 360,
+      "dw_rows": 360,
+      "status": "matched"
+    },
+    {
+      "dataset": "fact_covers",
+      "source_rows": 9489,
+      "dw_rows": 9489,
+      "status": "matched"
+    },
+    {
+      "dataset": "fact_expenses",
+      "source_rows": 9723,
+      "dw_rows": 9723,
+      "status": "matched"
+    },
+    {
+      "dataset": "fact_occupancy",
+      "source_rows": 1165,
+      "dw_rows": 1165,
+      "status": "matched"
+    },
+    {
+      "dataset": "fact_revenue",
+      "source_rows": 12157,
+      "dw_rows": 12157,
+      "status": "matched"
+    }
+  ],
+  "advanced_requirements": {
+    "scd_type_2": "dw.dim_unit_scd2 and data/reference/unit_scd2_changes.csv",
+    "indexes": "sql/dw/01_create_star_schema.sql and docs/evidencias/indices_dw.txt",
+    "partitioning": "DW yearly partitions and Lakehouse Gold partition_year folders",
+    "time_travel": "Delta history/versionAsOf evidence in docs/evidencias/delta_history.txt",
+    "schema_evolution": "mergeSchema=true plus ingestion_note evidence in docs/evidencias/schema_evolution.txt"
+  }
+}
