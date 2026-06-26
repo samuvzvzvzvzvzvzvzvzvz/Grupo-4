@@ -1,4 +1,8 @@
 # Projeto Aplicado — Data Warehouse e Data Lake
+## Como são muitos arquivos, será necessário baixar o arquivo compactado .rar para execução do projeto.
+## Como são muitos arquivos, será necessário baixar o arquivo compactado .rar para execução do projeto.
+## Como são muitos arquivos, será necessário baixar o arquivo compactado .rar para execução do projeto.
+
 
 Este repositório inicia o projeto final com o dataset **Barcelona Luxury Hotel F&B**. Ele foi escolhido por conter várias tabelas fato e dimensão, histórico diário e métricas operacionais suficientes para comparar ETL em Data Warehouse com ELT em um Lakehouse Medallion.
 
